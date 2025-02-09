@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import paymentRoutes from './src/routes/paymentRoutes.js';
 import dotenv from 'dotenv';
 import orderRoutes from './src/routes/orderRoutes.js';
 import cors from 'cors';
@@ -29,6 +30,7 @@ mongoose.connect(MongoDB, {
 app.use(express.json());
 app.use('/api', orderRoutes);
 app.use('/api', checkoutRoutes); // Use the new route
+app.use('/api', paymentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
